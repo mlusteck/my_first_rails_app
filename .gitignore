@@ -30,8 +30,4 @@
 /config/master.key
 
 #ignore mac folder info
-<<<<<<< HEAD
 *.DS_Store
-=======
-.DS_Store
->>>>>>> 4a8a523c29f7790e3f8c5e357b53ba07117c7204
