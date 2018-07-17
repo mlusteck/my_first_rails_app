@@ -1,3 +1,75 @@
 // Place all the styles related to the simple_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/********************  general rules  *****************************************/
+* { box-sizing: border-box; }
+
+body {
+  position: relative;
+  padding-top: 80px;
+  color: #e0f0b0;
+  background-color: #002b00;
+}
+
+h1,
+h2,
+h3 {
+  color: #d5d550;//#c5c500;//#e0d000;
+}
+
+section {
+  padding-top: 1em;
+  padding-bottom: 5em;
+}
+/*-------------------  end general rules  ------------------------------------*/
+
+/********************  navigation  ********************************************/
+#my-navbar {
+  background-color: #001c00;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+#my-navbar ul,
+#my-navbar a:link,
+#my-navbar a:visited {
+  color: #f0e000;//#e0f0b0; //#a0d7d0;
+}
+
+#my-navbar a:hover,
+#my-navbar a:active {
+  color: #ffff90;//#fff090;
+}
+/*-------------------  end navigation  ---------------------------------------*/
+
+
+/********************  footer  ************************************************/
+footer {
+  min-height: 50vw;
+  padding: 20px;
+  color: #709040;
+  background-color: #001c00;
+}
+/*-------------------  end footer  -------------------------------------------*/
+
+/******************** typography  *********************************************/
+
+body,
+p,
+li {
+  font-family: 'Quattrocento', serif;
+}
+
+h1,
+h2,
+h3,
+nav.navbar,
+nav.navbar a,
+.carousel,
+.carousel p,
+.contact p,
+footer {
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+/*-------------------  end typography  ---------------------------------------*/
