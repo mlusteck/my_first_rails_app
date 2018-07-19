@@ -18,6 +18,17 @@ h3 {
   color: #d5d550;//#c5c500;//#e0d000;
 }
 
+a,
+a:link,
+a:visited {
+  color: #80e0c0;//#c5c500;//#e0d000;
+}
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #b0ffff;;//#c5c500;//#e0d000;
+  background-color: transparent;
+}
 section {
   padding-top: 1em;
   padding-bottom: 5em;

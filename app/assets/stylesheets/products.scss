@@ -1,0 +1,28 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.products-table,
+table.products-table th,
+table.products-table td {
+  font-family: 'Quattrocento', serif;
+}
+
+table.products-table th {  font-size: 1.5em; }
+table.products-table th,
+table.products-table td {
+  padding: 0.6em;
+  vertical-align: top;
+}
+table.products-table th {
+  padding-left: 0.3em;
+}
+
+table.products-table col.name-col { width: 15%; }
+table.products-table col.description-col { width: 60%; }
+table.products-table col.image-url-col { width: 15%; }
+
+
+a.edit-link {
+  font-family: 'Quattrocento Sans', sans-serif;
+}

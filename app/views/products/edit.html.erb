@@ -1,0 +1,8 @@
+<section class="container edit-product">
+  <h1>Editing Product</h1>
+
+  <%= render 'form', product: @product %>
+
+  <%= link_to 'Show', @product, class: "edit-link" %> |
+  <%= link_to 'Back', products_path, class: "edit-link" %>
+</section>
