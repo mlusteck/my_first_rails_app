@@ -2,6 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.product-card-outer {  // empty placeholder with fixed aspect ratio
+  position: relative;
+  width: 100%;
+  padding-top: 210%;
+}
+.product-card {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 1em;
+}
+.product-card-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1em;
+}
+.product-card h3 {
+  text-align: center;
+  padding-top: 0.5em;
+}
+
+.product-card-bottom .price {
+  padding-right: 0.6em;
+  text-align: right;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+  color: #d5d550;
+}
+.product-card-outer hr {
+  margin: 0.6em 0;
+  border-top: 1px solid rgba(255, 255, 100, 0.4);
+ }
+
+
 table.products-table,
 table.products-table th,
 table.products-table td {

@@ -27,8 +27,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :color %>
-    <%= form.text_field :color %>
+    <%= form.label :colour %>
+    <%= form.text_field :colour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, step: 0.01 %>
   </div>
 
   <div class="actions">

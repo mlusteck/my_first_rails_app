@@ -17,8 +17,12 @@
   </p>
 
   <p>
-    <strong>Color:</strong>
-    <%= @product.color %>
+    <strong>Colour:</strong>
+    <%= @product.colour %>
+  </p>
+  <p>
+    <strong>Price:</strong>
+    <%= @product.price %> €
   </p>
 <%= link_to 'Edit', edit_product_path(@product), class: "edit-link" %> |
   <%= link_to 'Back', products_path, class: "edit-link" %>
