@@ -1,0 +1,35 @@
+<section class="container">
+  <h1>Welcome to Beasts of Berlin</h1>
+  <hr />
+  <div class="row">
+    <div class="col-12 col-md-7">
+      <br />
+      <h2>Your source for mythical creatures in Berlin</h2>
+      <p style="font-size:1.5em; line-height:1.3;" >
+        <br />
+        We are your experts for legendary beasts. You don’t know which food your basilisk really needs?
+        You wonder which type of brush is right for your Medusa's hair?
+        You are looking for a companion for your gryphon?
+        Then this is the place to be!
+      </p>
+    </div>
+    <div class="col-12 col-md-5" style="padding-left: 20px;">
+      <% if @featured_product !=nil %>
+        <br />
+        <h3><i>Featured Product: <%= @featured_product.name %></i></h3>
+        <p>
+          <br />
+          <%=
+          link_to products_path do
+            if asset_exist? @featured_product.image_url
+              image_tag @featured_product.image_url, class:"img-fluid"
+            else
+              image_tag "flyfish-800w.jpg", class:"img-fluid"
+            end
+          end
+          %>
+        </p>
+      <% end  %>
+    </div>
+  </div><!-- end  row -->
+</section>
