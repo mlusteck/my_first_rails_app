@@ -1,5 +1,19 @@
 <div class="container">
   <p style="font-size:4em;">
     <%= @my_other_string %>
+    <br /><br />
   </p>
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Product:</strong>
+    <%= @order.product.name %>
+  </p>
+
+  <p>
+    <strong>Total:</strong>
+    <%= @order.total %>
+  </p>
+
+  <%= link_to 'Back', orders_path, class: "edit-link" %>
 </div>

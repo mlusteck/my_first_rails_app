@@ -1,5 +1,16 @@
 <div class="container">
+  <p id="notice"><%= notice %></p>
   <p style="font-size:4em;">
     <%= @my_string %>
+    <br /><br />
   </p>
-</div>  
+  <h1>Orders</h1>
+  <p>
+    <% @orders.each do |order| %>
+      Product: <%= order.product.name %>, Total: <%= order.total %>
+      <%= link_to 'Destroy', order, class: "edit-link",
+                       method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br />
+    <% end %>
+  </p>
+</div>
