@@ -1,51 +1,10 @@
-<% #test if asset exists (for displaying images)
-def asset_exist?(path)
-  if Rails.configuration.assets.compile
-    Rails.application.precompiled_assets.include? path
-  else
-    Rails.application.assets_manifest.assets[path].present?
-  end
-end
-%>
-
 <section class="container-fluid all-products">
   <p id="notice"><%= notice %></p>
 
   <h1>Products</h1>
 
   <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="product-card-outer">
-          <div class="product-card">
-            <hr />
-            <%=
-            if asset_exist? product.image_url
-              image_tag product.image_url, class:"img-fluid"
-            else
-              image_tag "flyfish-800w.jpg", class:"img-fluid"
-            end
-            %>
-            <h3><%= product.name %></h3>
-            <hr />
-            <p><%= product.description %></p>
-            <p>Colour: <%= product.colour %></p>
-          </div><!-- end product-card -->
-          <div class="product-card-bottom">
-            <div class="price">
-              <%= product.price %> €
-            </div>
-            <hr />
-            <p>
-              <%= link_to 'Show', product, class: "edit-link" %> &bull;
-              <%= link_to 'Edit', edit_product_path(product), class: "edit-link"%> &bull;
-              <%= link_to 'Destroy', product, class: "edit-link",
-                               method: :delete, data: { confirm: 'Are you sure?' } %>
-            </p>
-          </div><!-- end product-card-bottom -->
-        </div><!-- end product-card-outer -->
-      </div><!-- end col -->
-    <% end %>
+    <%= render partial: "product", collection: @products %>
   </div><!-- end row -->
 
   <br>

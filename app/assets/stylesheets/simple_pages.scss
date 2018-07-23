@@ -8,6 +8,8 @@
 body {
   position: relative;
   padding-top: 80px;
+  font-size: 1em;
+  line-height: normal;
   color: #e0f0b0;
   background-color: #002b00;
 }
@@ -31,7 +33,7 @@ a:active {
 }
 section {
   padding-top: 1em;
-  padding-bottom: 5em;
+  padding-bottom: 2em;
 }
 /*-------------------  end general rules  ------------------------------------*/
 
@@ -53,6 +55,58 @@ section {
 }
 /*-------------------  end navigation  ---------------------------------------*/
 
+/********************  landing page *******************************************/
+
+.landing-top h1 { text-align: center; }
+
+/*-------------------  end landing page  -------------------------------------*/
+
+/********************  landing page carousel **********************************/
+#my-main-carousel .carousel-item {
+  padding: 0 20%;
+  padding-bottom: 50px;
+}
+#my-main-carousel .description {
+  padding-top: 8%;
+  padding-right: 3%;
+  text-align: right;
+}
+#my-main-carousel .description p {
+  font-family: 'Quattrocento', serif;
+  font-size: 2vw;
+}
+#my-main-carousel .description h3 { font-size: 3vw; }
+
+#my-main-carousel .carousel-control-prev-icon,
+#my-main-carousel .carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-size: 100%, 100%;
+  border: none;
+  background-image: none;
+}
+
+#my-main-carousel .carousel-control-next-icon:after
+{
+  content: '\00bb';
+  font-size: 55px;
+  color: #f0e000;
+}
+
+#my-main-carousel .carousel-control-prev-icon:after {
+  content: '\00ab';
+  font-size: 55px;
+  color: #f0e000;
+}
+
+#my-main-carousel .carousel-indicators li {
+  background-color: rgba(250, 200, 0, 0.5);
+}
+#my-main-carousel .carousel-indicators li.active {
+  background-color: #f0e000;
+}
+
+/*-------------------  end landing page carousel  ----------------------------*/
 
 /********************  footer  ************************************************/
 footer {
