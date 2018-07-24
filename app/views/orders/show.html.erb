@@ -1,19 +1,17 @@
+<%= render 'shared/decoration_string' %>
 <div class="container">
-  <p style="font-size:4em;">
-    <%= @my_other_string %>
-    <br /><br />
-  </p>
   <p id="notice"><%= notice %></p>
-
+  <h2>Order Information</h2>
   <p>
-    <strong>Product:</strong>
-    <%= @order.product.name %>
-  </p>
-
-  <p>
-    <strong>Total:</strong>
-    <%= @order.total %>
-  </p>
-
-  <%= link_to 'Back', orders_path, class: "edit-link" %>
+  <% if @order %>
+    <strong>Order ID: </strong><%= @order.id %> &mdash;
+    <strong>Product Name: </strong><%= @order.product.name %> &mdash;
+    <strong>Product Price: </strong><%= number_to_euro(@order.product.price) %> &mdash;
+    <strong>Total Price: </strong><%= number_to_euro(@order.total) %> &mdash;
+    <%= link_to 'Back', orders_path, class: "edit-link" %>
+  <% else %>
+    <strong>No Order found with this ID.</strong>
+  <% end %>
+</p>
 </div>
+<%= render 'shared/decoration_string' %>

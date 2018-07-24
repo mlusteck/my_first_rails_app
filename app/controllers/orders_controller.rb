@@ -1,14 +1,14 @@
 class OrdersController < ApplicationController
   def index
-    @my_string = ""
-    (0...30).each {|n| @my_string += (rand(26) + 97).chr }
-    @my_string += "?"
-    @orders = Order.all
+    @orders = Order.includes(:product).all
   end
 
   def show
-    @my_other_string = "Order " + params[:id] + ": "
-    (0...20).each {|n| @my_other_string += (rand(26) + 97).chr }
+    if(Order.exists?(params[:id]))
+      @order = Order.find(params[:id])
+    else
+      @order = nil
+    end
   end
 
   def new
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order = Order.find(params[:id]) #!!! this should not be necessary
+    @order = Order.find(params[:id])
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }

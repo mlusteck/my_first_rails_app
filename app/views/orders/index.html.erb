@@ -1,16 +1,20 @@
+<%= render 'shared/decoration_string' %>
 <div class="container">
   <p id="notice"><%= notice %></p>
-  <p style="font-size:4em;">
-    <%= @my_string %>
-    <br /><br />
-  </p>
   <h1>Orders</h1>
-  <p>
+  <div class="row">
     <% @orders.each do |order| %>
-      Product: <%= order.product.name %>, Total: <%= order.total %>
-      <%= link_to 'Destroy', order, class: "edit-link",
-                       method: :delete, data: { confirm: 'Are you sure?' } %>
-      <br />
+      <div class="col-12 col-md-6">
+        <h3>Order # <%= order.id %>:
+              <%= link_to order.product.name, order %>
+        </h3>
+        <p><%= order.product.description %></p>
+        <p><strong><%= number_to_euro(order.product.price) %></strong></p>
+        <p><%= link_to 'Destroy', order, class: "edit-link",
+                         method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div><!-- end col -->
     <% end %>
-  </p>
+  </div><!-- end row -->
 </div>
+<%= render 'shared/decoration_string' %>

@@ -7,7 +7,7 @@
 
 body {
   position: relative;
-  padding-top: 80px;
+  padding-top: 50px;
   font-size: 1em;
   line-height: normal;
   color: #e0f0b0;
@@ -52,6 +52,13 @@ section {
 #my-navbar a:hover,
 #my-navbar a:active {
   color: #ffff90;//#fff090;
+}
+
+.deco-string {
+  margin: 0.2em -2em;
+  color: #340;
+  font-size:4vw;
+  text-align: center;
 }
 /*-------------------  end navigation  ---------------------------------------*/
 
@@ -110,7 +117,7 @@ section {
 
 /********************  footer  ************************************************/
 footer {
-  min-height: 50vw;
+  min-height: 10em;
   padding: 20px;
   color: #709040;
   background-color: #001c00;
