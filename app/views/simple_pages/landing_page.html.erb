@@ -1,7 +1,7 @@
-<section class="landing-top container-fluid">
+<section class="landing-top">
   <h1>Welcome to Beasts of Berlin</h1>
 </section>
-<div class="container-fluid">
+<section class="carousel-section">
   <div class="carousel slide" id="my-main-carousel"  data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -17,12 +17,12 @@
       <% @products.each do |product| %>
       <div  class="carousel-item <%= 'active' if product == @products.first %>">
         <div class="row">
-          <div class="col-12 col-sm-6">
-            <%= product_image_tag product %>
+          <div class="col-12 col-sm-6 product-image">
+            <%= product_linked_image product, product %>
           </div>
           <div class="col-12 col-sm-6 order-sm-first description">
             <div >
-              <h3><%= product.name %></h3>
+              <h3><%= link_to product.name, product  %></h3>
               <hr />
               <p class="d-none d-sm-block"><%= product.description %></p>
             </div>
@@ -42,12 +42,16 @@
     </a>
   </div><!-- End #my-main-carousel -->
   <hr />
-</div>
+</section>
 <%= render 'shared/decoration_string' %>
-<section class="container-fluid">
+<section class="featured-section">
   <div class="row">
-    <div class="col-12 col-md-7">
-      <br />
+    <div class="col-12 col-md-5 col-lg-4 product-image">
+      <% if @featured_product %>
+        <%= product_linked_image @featured_product, products_path %>
+      <% end  %>
+    </div>
+    <div class="col-12 col-md-7 col-lg-8 order-first feature-left">
       <h2>Your source for mythical creatures in Berlin</h2>
       <p>
         We are your experts for legendary beasts. You don’t know which food your basilisk really needs?
@@ -55,15 +59,10 @@
         You are looking for a companion for your gryphon?
         Then this is the place to be!
       </p>
-    </div>
-    <div class="col-12 col-md-5" style="padding-left: 20px;">
       <% if @featured_product %>
-        <br />
-        <h3><i>Featured Product: <%= @featured_product.name %></i></h3>
-        <p>
-          <br />
-          <%= product_linked_image @featured_product, products_path %>
-        </p>
+        <div class="feature-left-bottom">
+        <h3><i>Featured Product: <%= link_to @featured_product.name, @featured_product %></i></h3>
+      </div>
       <% end  %>
     </div>
   </div><!-- end  row -->

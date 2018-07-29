@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/********************  products page  *********************************************/
+
 .product-card-outer {  // empty placeholder with fixed aspect ratio
   position: relative;
   width: 100%;
@@ -37,6 +39,8 @@
   border-top: 1px solid rgba(255, 255, 100, 0.4);
  }
 
+ .product-card a:hover + h3 a { color: #b0ffff; }
+
 a.edit-link {
   font-family: 'Quattrocento Sans', sans-serif;
 }
@@ -68,3 +72,56 @@ a.edit-link {
 @media screen and (min-width: 1200px) {
   .product-card-outer { padding-top: 210%; }
 }
+/*-------------------  end products page -------------------------------------*/
+
+/********************  show page  *********************************************/
+section.show-product { padding: 10vh 10vw; }
+
+section.show-product h3 {
+  padding-top: 0.5em;
+  font-size: 1.75em;
+}
+
+.product-info-main { min-height: 18em; }
+
+.product-info-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 1em;
+}
+
+.product-info-bottom .price {
+  padding-right: 0.6em;
+  text-align: right;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+  color: #d5d550;
+}
+
+ .product-info a:hover + h3 a { color: #b0ffff; }
+
+ @media screen and (min-width: 576px) {
+ }
+ @media screen and (min-width: 768px) {
+   section.show-product {
+     padding: 10vh 12vw;
+     font-size: 1.1em;
+   }
+ }
+ @media screen and (min-width: 992px) {
+   section.show-product {
+     padding: 9vh 15vw;
+     font-size: 1.15em;
+   }
+ }
+ @media screen and (min-width: 1200px) {
+   section.show-product {
+     padding: 8vh 20vw;
+     font-size: 1.2em;
+   }
+ }
+
+/*-------------------  end show page -----------------------------------------*/

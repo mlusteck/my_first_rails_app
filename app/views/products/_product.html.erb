@@ -4,8 +4,8 @@
   <div class="product-card-outer">
     <div class="product-card">
       <hr />
-      <%= product_image_tag product %>
-      <h3><%= product.name %></h3>
+      <%= product_linked_image product, product %>
+      <h3><%= link_to product.name, product %></h3>
       <hr />
       <p><%= product.description %></p>
       <p>Colour: <%= product.colour %></p>
