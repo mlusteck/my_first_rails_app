@@ -1,9 +1,9 @@
 module ProductsHelper
   def product_image_tag(product)
     if asset_exist? product.image_url
-      image_tag product.image_url, class:"img-fluid"
+      image_tag product.image_url, class: "img-fluid" alt: product.name
     else
-      image_tag "flyfish-800w.jpg", class:"img-fluid"
+      image_tag "flyfish-800w.jpg", class: "img-fluid" alt: product.name
     end
   end
 
