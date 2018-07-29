@@ -1,3 +1,4 @@
+
 module ProductsHelper
   def product_image_tag(product)
     if asset_exist? product.image_url
