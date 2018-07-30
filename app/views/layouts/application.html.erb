@@ -32,7 +32,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
@@ -50,6 +50,14 @@
             <%= link_to "Contact", simple_pages_contact_path, class: "nav-link" %>
           </li>
         </ul>
+        <%= form_with(url: products_path, method: 'get', local: true, class: "form-inline my-2 my-lg-0", id:"search-form") do |form| %>
+          <span class="search-field">
+            <%= form.text_field :q, id: 'q', value: params[:q], class: "form-control mr-sm-2", placeholder: "Search for", 'aria-label': "Search"%>
+            <button type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </span>
+        <% end %>
       </div>
     </nav>
     <!-- end of navbar -->

@@ -4,7 +4,17 @@
   <h1>Products</h1>
 
   <div class="row">
-    <%= render partial: "product", collection: @products %>
+    <% if @products.length > 0 %>
+      <%= render partial: "product", collection: @products %>
+    <% else %>
+      <div class="col-12">
+        <%if params[:q] %>
+          <p>No products matched your query for <strong>'<%= params[:q] %>'</strong>.</p>
+        <% else %>
+          <p>No products were found.</p>
+        <% end %>
+      </div>
+    <% end %>
   </div><!-- end row -->
 
   <br>

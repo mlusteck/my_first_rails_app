@@ -63,16 +63,15 @@ hr {
   font-weight: bold;
 }
 
-#my-navbar li { text-align: right; }
 #my-navbar ul,
 #my-navbar a:link,
 #my-navbar a:visited {
-  color: #f0e000;//#e0f0b0; //#a0d7d0;
+  color: #f0e000;
 }
 
 #my-navbar a:hover,
 #my-navbar a:active {
-  color: #ffff90;//#fff090;
+  color: #ffff90;
 }
 
 .deco-string {
@@ -82,11 +81,59 @@ hr {
   font-size:4vw;
   text-align: center;
 }
+
 .deco-string-inner {
   margin: 0.2em -2em;
   color: #340;
   font-size:4vw;
   text-align: center;
+}
+
+
+#search-form {
+  padding-top: 0.1em;
+}
+#search-form .search-field{
+  position: relative;
+  display: flex;
+}
+#search-form .form-control {
+  margin-left: 1em;
+  padding: 0.15em 0.6em;
+  padding-right: 1.5em;
+  border-radius: 1em;
+  border: none;
+  color: #e0f0b0;
+  background-color: #002b00;
+}
+
+#q::placeholder {            /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #709040;
+    opacity: 1; /* Firefox */
+}
+#q:-ms-input-placeholder {    /* Internet Explorer 10-11 */
+  color: #709040;
+}
+#q::-ms-input-placeholder {  /* Microsoft Edge */
+  color: #709040;
+}
+#search-form button {
+  position: absolute;
+  top: 0.25em;
+  right: 0.4em;
+  background-color: transparent;
+  color: #80e0c0;
+  border: none;
+}
+
+#search-form button:hover {
+  color: #b0ffff;
+}
+
+@media screen and (max-width: 575px) {
+  #search-form .search-field{
+    width: 100%;
+  }
 }
 /*-------------------  end navigation  ---------------------------------------*/
 
