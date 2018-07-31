@@ -56,6 +56,62 @@ hr {
 
 /*-------------------  end general rules  ------------------------------------*/
 
+/******************** forms********  ******************************************/
+
+form label {
+  color: #d5d550;
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+form .form-control {
+  border: none;
+  color: #e0f0b0 !important;
+  background-color: #003b00 !important;
+}
+
+form .form-control:-webkit-autofill,
+form .form-control:-webkit-autofill:hover,
+form .form-control:-webkit-autofill:focus {
+  background-color: #003b00 !important;
+  color: #e0f0b0 !important;
+}
+
+form .btn-primary {
+  border: 2px solid #004000;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: bold;
+  color: #80e0c0;
+  background-color: #003000;
+}
+
+form .btn-primary:hover {
+  border: 2px solid #b0ffff;
+  color: #b0ffff;
+  background-color: #004000;
+}
+
+.form-control::placeholder {            /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #709040;
+    opacity: 1; /* Firefox */
+}
+
+.form-control:-ms-input-placeholder {    /* Internet Explorer 10-11 */
+  color: #709040;
+}
+
+.form-control::-ms-input-placeholder {  /* Microsoft Edge */
+  color: #709040;
+}
+
+form.product-form,
+form.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-bottom: 2em;
+}
+
+/*-------------------  end forms ---------------------------------------------*/
+
 /********************  navigation  ********************************************/
 #my-navbar {
   background-color: #001c00;
@@ -117,6 +173,7 @@ hr {
 #q::-ms-input-placeholder {  /* Microsoft Edge */
   color: #709040;
 }
+
 #search-form button {
   position: absolute;
   top: 0.25em;
@@ -151,6 +208,8 @@ section.featured-section {
   padding-right: 7vw;
   font-size: 1.2em;
 }
+
+section.featured-section p { text-align: center; }
 
 .feature-left {
   padding-right: 1em;

@@ -15,3 +15,16 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery3
+
+// Rails & jQuery: turbolinks prevent document(ready),
+// use this instead:
+$(document).on( "turbolinks:load", function () {
+  // slightly brutal method to get rid of yellow autocomplete styles
+  // when focus is lost: clone field, remove original
+  $('.form-control').each(function(){
+    $(this).focusout( function() {
+      var clone = $(this).clone(true, true);
+      $(this).after(clone).remove();
+    });
+  });
+});

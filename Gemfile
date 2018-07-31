@@ -38,6 +38,8 @@ gem 'jquery-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'figaro'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
@@ -56,7 +58,7 @@ end
 
 group :production do
   # Use PostgreSQL as the database in production environment
-  # The pg gem version 1.0.0 is not yet compatible with Rails 5, so we use v0.20 
+  # The pg gem version 1.0.0 is not yet compatible with Rails 5, so we use v0.20
   gem 'pg', '~> 0.20'
 end
 

@@ -125,39 +125,3 @@ section.show-product h3 {
  }
 
 /*-------------------  end show page -----------------------------------------*/
-
-/********************  product form  ******************************************/
-.product-form {
-  padding-bottom: 2em;
-}
-.product-form .field {
-    margin-bottom: 1.5em;
-}
-
-.product-form label {
-  color: #d5d550;
-  font-family: 'Quattrocento Sans', sans-serif;
-}
-
-.product-form .form-control {
-  border: none;
-  color: #e0f0b0;
-  background-color: #003b00;
-}
-
-.product-form .btn-success {
-  border: 2px solid #004000;
-  font-family: 'Quattrocento Sans', sans-serif;
-  font-weight: bold;
-  color: #80e0c0;
-  background-color: #003000;
-}
-
-.product-form .btn-success:hover {
-  border: 2px solid #b0ffff;
-  color: #b0ffff;
-  background-color: #004000;
-}
-
-
-/*-------------------  end product form --------------------------------------*/

@@ -1,10 +1,22 @@
 <%= render 'shared/decoration_string' %>
 <section class="featured-section">
-  <h1>Contact</h1>
-  <p>We are your experts for legendary beasts. You don’t know which food your basilisk really needs?
-    You wonder which type of brush is right for your Medusa's hair?
-    You are looking for a companion for your gryphon?
-    Then this is the place to be!
-  </p>
-</section>
+  <h1>Contact Us</h1>
+
+  <%= flash[:notice] %>
+
+  <%= form_with(url:"/simple_pages/thank_you", method: "post", local: true, class: "contact-form") do |form| %>
+  <div class="form-group">
+    <%= form.label :name, "Name*" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter Name", required: true %>
+  </div>
+  <div class="form-group">
+    <%= form.label :email, "Email*" %>
+    <%= form.email_field :email, class: "form-control", placeholder: "Enter Email", required: true %>
+  </div>
+  <div class="form-group">
+    <%= form.label :message, "Message*" %>
+    <%= form.text_area :message, class: "form-control", placeholder: "Enter Message", rows: 5, required: true %>
+  </div>
+  <%= form.submit "Send", class: "btn btn-primary" %>
+  <% end %>  </section>
 <%= render 'shared/decoration_string' %>
