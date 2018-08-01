@@ -2,8 +2,6 @@
 <section class="featured-section">
   <h1>Contact Us</h1>
 
-  <%= flash[:notice] %>
-
   <%= form_with(url:"/simple_pages/thank_you", method: "post", local: true, class: "contact-form") do |form| %>
   <div class="form-group">
     <%= form.label :name, "Name*" %>

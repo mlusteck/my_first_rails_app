@@ -43,12 +43,26 @@
           <li class="nav-item">
             <%= link_to "Products", products_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Orders", orders_path, class: "nav-link" %>
-          </li>
+          <% if user_signed_in?  # Orders are only for signed-in users%>
+            <li class="nav-item">
+              <%= link_to "Orders", orders_path, class: "nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item">
             <%= link_to "Contact", simple_pages_contact_path, class: "nav-link" %>
           </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign up!", new_user_registration_path, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
         <%= form_with(url: products_path, method: 'get', local: true, class: "form-inline my-2 my-lg-0", id:"search-form") do |form| %>
           <span class="search-field">
@@ -62,6 +76,9 @@
     </nav>
     <!-- end of navbar -->
     <div class="container-fluid outer-container">
+      <% if notice %>
+        <p id="notice"><%= notice %></p>
+      <% end %>
       <%= yield %>
 
       <footer>

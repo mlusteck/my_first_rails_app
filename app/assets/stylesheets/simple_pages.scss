@@ -7,7 +7,7 @@
 
 body {
   position: relative;
-  padding-top: 50px;
+  padding-top: 54px;
   font-size: 1em;
   line-height: normal;
   color: #e0f0b0;
@@ -31,6 +31,11 @@ a:active {
   color: #b0ffff;
   background-color: transparent;
 }
+
+a.edit-link {
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
 section {
   padding-top: 1em;
   padding-bottom: 0;
@@ -54,17 +59,38 @@ hr {
   border-top: 1px solid rgba(255, 255, 100, 0.4);
 }
 
+#notice {
+  text-align: center;
+  margin: 0;
+  padding: 0.3em;
+  font-size: 0.9em;
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: #a0d080;
+}
 /*-------------------  end general rules  ------------------------------------*/
 
 /******************** forms********  ******************************************/
+form .field {
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: #a0d080;
+  margin-bottom: 1em;
+}
 
 form label {
+  display: inline-block;
   color: #d5d550;
   font-family: 'Quattrocento Sans', sans-serif;
 }
 
 form .form-control {
   border: none;
+  color: #e0f0b0 !important;
+  background-color: #003b00 !important;
+}
+
+form .form-control[type="checkbox"] {
+  display: inline-block;
+  width: 1em;
   color: #e0f0b0 !important;
   background-color: #003b00 !important;
 }
@@ -111,6 +137,24 @@ form.contact-form {
 }
 
 /*-------------------  end forms ---------------------------------------------*/
+
+/********************  devise user forms  *************************************/
+.user-container form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 2em;
+}
+
+.devise-links {
+  text-align: center;
+  padding-bottom: 2em;
+}
+.devise-links a {
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+
+/*-------------------  end devise user forms  --------------------------------*/
 
 /********************  navigation  ********************************************/
 #my-navbar {

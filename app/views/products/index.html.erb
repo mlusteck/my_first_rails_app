@@ -1,8 +1,5 @@
 <section class="all-products">
-  <p id="notice"><%= notice %></p>
-
   <h1>Products</h1>
-
   <div class="row">
     <% if @products.length > 0 %>
       <%= render partial: "product", collection: @products %>
