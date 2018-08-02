@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   skip_before_action :verify_authenticity_token # order test create!!!
   before_action :authenticate_user!
   load_and_authorize_resource
-  
+
   def index
     @orders = Order.includes(:product).where( user_id: current_user )
   end
@@ -15,8 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #@order = Order.new(order_params) # order test create!!!
-    @order = Order.new( params.permit(:user_id, :product_id, :total) ) # order test create!!!
+    @order = Order.new( order_params ) 
 
     respond_to do |format|
       if @order.save
