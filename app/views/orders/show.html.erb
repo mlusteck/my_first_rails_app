@@ -7,6 +7,7 @@
     <strong>Product Name: </strong><%= @order.product.name %> &mdash;
     <strong>Product Price: </strong><%= number_to_euro(@order.product.price) %> &mdash;
     <strong>Total Price: </strong><%= number_to_euro(@order.total) %> &mdash;
+    <em>(uid: <%= @order.user_id %>)</em> &mdash;
     <%= link_to 'Back', orders_path, class: "edit-link" %>
   <% else %>
     <strong>No Order found with this ID.</strong>

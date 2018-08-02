@@ -7,10 +7,6 @@ class SimplePagesController < ApplicationController
     @products = Product.limit(3)
   end
 
-  def redirect_home
-    redirect_to "/simple_pages/landing_page", notice: 'You were redirected to the landing page.'
-  end
-
   def thank_you
     @name = params[:name]
     @email = params[:email]

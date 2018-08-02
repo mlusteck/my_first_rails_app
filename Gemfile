@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+#source 'http://mirror.ops.rhcloud.com/mirror/ruby/'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
@@ -40,7 +41,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'figaro'
 
+# Authentication
 gem 'devise'
+
+#Authorization
+gem 'cancancan', '~> 2.0'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

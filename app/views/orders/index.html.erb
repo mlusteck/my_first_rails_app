@@ -9,7 +9,7 @@
         </h3>
         <p><%= order.product.description %></p>
         <p><strong><%= number_to_euro(order.product.price) %></strong></p>
-        <p><%= link_to 'Destroy', order, class: "edit-link",
+        <p><%= link_to 'Show', order, class:"edit-link" %> &bull; <%= link_to 'Destroy', order, class: "edit-link",
                          method: :delete, data: { confirm: 'Are you sure?' } %>
         </p>
       </div><!-- end col -->

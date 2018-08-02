@@ -59,7 +59,8 @@ hr {
   border-top: 1px solid rgba(255, 255, 100, 0.4);
 }
 
-#notice {
+#notice,
+#alert {
   text-align: center;
   margin: 0;
   padding: 0.3em;
@@ -67,6 +68,8 @@ hr {
   font-family: 'Quattrocento Sans', sans-serif;
   color: #a0d080;
 }
+
+#alert { color: #f06050; }
 /*-------------------  end general rules  ------------------------------------*/
 
 /******************** forms********  ******************************************/
@@ -139,10 +142,14 @@ form.contact-form {
 /*-------------------  end forms ---------------------------------------------*/
 
 /********************  devise user forms  *************************************/
-.user-container form {
+.user-container {
   max-width: 600px;
   margin: 0 auto;
   padding-bottom: 2em;
+}
+.user-container p{
+  color: #d5d550;
+  font-family: 'Quattrocento Sans', sans-serif;
 }
 
 .devise-links {
