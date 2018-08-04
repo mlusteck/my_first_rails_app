@@ -7,6 +7,10 @@ class Product < ApplicationRecord
     Product.where("LOWER(name) LIKE ?", "%#{search_term.downcase}%")
   end
 
+  def average_rating
+    comments.average(:rating).to_f
+  end
+  
   def highest_rating_comment
     comments.rating_desc.first
   end

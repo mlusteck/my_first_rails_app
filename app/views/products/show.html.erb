@@ -10,7 +10,9 @@
         <hr />
         <p><%= @product.description %></p>
         <p>Colour: <%= @product.colour %></p>
-
+        <div>Average Rating: &nbsp;
+          <div class="rated" data-score="<%= @product.average_rating %>"></div>
+        </div>
       </div>
       <div class="product-info-bottom">
         <div class="price">
@@ -26,5 +28,10 @@
       </div>
     </div>
   </div><!-- end row -->
+  <div class="comments">
+    <hr />
+    <%= render "new_comment" %>
+    <%= render "comments" %>
+  </div>
 </section>
 <%= render 'shared/decoration_string' %>

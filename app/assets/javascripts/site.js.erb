@@ -1,0 +1,33 @@
+//= require jquery3
+//= require jquery.raty.js
+
+// Rails & jQuery: turbolinks prevent document(ready),
+// use this instead:
+$(document).on( "turbolinks:load", function () {
+  // slightly brutal method to get rid of yellow autocomplete styles
+  // when focus is lost: clone field, remove original
+  $('.form-control').each(function(){
+    $(this).focusout( function() {
+      var clone = $(this).clone(true, true);
+      $(this).after(clone).remove();
+    });
+  });
+
+  // activate the raty-ratings
+  $('.rating').raty({
+    starHalf:  '<%= asset_path "star-half.png" %>',
+    starOff:   '<%= asset_path "star-off.png" %>',
+    starOn:    '<%= asset_path "star-on.png" %>',
+    scoreName: 'comment[rating]'
+  });
+  
+  $('.rated').raty({
+    starHalf: '<%= asset_path 'star-half.png' %>',
+    starOff: '<%= asset_path 'star-off.png' %>',
+    starOn: '<%= asset_path 'star-on.png' %>',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+});

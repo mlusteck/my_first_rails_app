@@ -78,7 +78,11 @@ section.show-product h3 {
   font-size: 1.75em;
 }
 
+.comments { padding-top: 2em; }
+
 .product-info-main { min-height: 18em; }
+
+.product-info-main .rated { display: inline-block; }
 
 .product-info-bottom {
   position: absolute;
