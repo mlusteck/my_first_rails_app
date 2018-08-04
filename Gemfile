@@ -44,8 +44,11 @@ gem 'figaro'
 # Authentication
 gem 'devise'
 
-#Authorization
+# Authorization
 gem 'cancancan', '~> 2.0'
+
+# Pagination
+gem 'will_paginate', '~> 3.1.1'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

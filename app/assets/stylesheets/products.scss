@@ -124,4 +124,39 @@ section.show-product h3 {
    }
  }
 
+/********************  comments pagination  ***********************************/
+.comments-pagination {
+  padding: 0.3em;
+  text-align: center;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 1.1em;
+  color: #709040;
+}
+
+.comments-pagination a,
+.comments-pagination span,
+.comments-pagination em {
+  background-color: #001c00;
+  padding: 0.3em 0.6em;
+  border-radius: 0.3em;
+}
+
+.comments-pagination a:hover { background-color: #004c00; }
+
+.comments-pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  color: #d5d550;
+}
+
+.comments-pagination .previous_page,
+.comments-pagination .next_page {
+  padding: 0.3em 0.8em;
+  font-weight: bold;
+}
+
+
+/*-------------------  end comments pagination -------------------------------*/
+
+
 /*-------------------  end show page -----------------------------------------*/
