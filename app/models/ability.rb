@@ -5,7 +5,14 @@ class Ability
     user ||= User.new # guest user (not logged in)
     can :manage, User, id: user.id
     can :manage, Order, user_id: user.id
-    can :manage, Comment, user_id: user.id
+    can :read, Comment, user_id: user.id
+    can :manage, Comment, user_id: user.id  # users are allowed to remove their own comments
+    if user.admin?
+      can :manage, Comment
+    else
+      can :read, Comment
+    end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

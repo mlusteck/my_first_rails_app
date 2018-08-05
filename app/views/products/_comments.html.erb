@@ -1,7 +1,22 @@
 <div class="product-reviews">
   <% @comments.each do |comment| %>
     <hr>
-    <p><%= comment.user.first_name %> <small><em><%= "#{time_ago_in_words(comment.created_at)} ago" %></em></small></p>
+    <p>
+      <% if signed_in? && current_user == comment.user %>
+        <strong>My Review</strong>
+      <% else %>
+        <%= comment.user.first_name %>
+      <% end %>
+      <small><em><%= "#{time_ago_in_words(comment.created_at)} ago" %></em></small>
+      <% if signed_in? && (current_user.admin? || current_user == comment.user)%>
+        &nbsp;<small>
+          <%= link_to 'Remove', product_comment_path(comment.product, comment),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' },
+                      class: "edit-link" %>
+        </small>
+      <% end %>
+    </p>
     <p class="rated" data-score="<%= comment.rating %>"></p>
     <p><%= comment.body %></p>
   <% end %>
