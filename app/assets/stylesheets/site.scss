@@ -113,10 +113,12 @@ form .btn-primary {
   background-color: #003000;
 }
 
-form .btn-primary:hover {
-  border: 2px solid #b0ffff;
-  color: #b0ffff;
-  background-color: #004000;
+form .btn-primary:hover,
+form .btn-primary:active,
+form input.active {
+  border: 2px solid #b0ffff !important;
+  color: #b0ffff !important;
+  background-color: #004000 !important;
 }
 
 .form-control::placeholder {            /* Chrome, Firefox, Opera, Safari 10.1+ */

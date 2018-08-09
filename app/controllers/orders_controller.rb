@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :verify_authenticity_token # order test create!!!
+  skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
   load_and_authorize_resource
 
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new( order_params ) 
+    @order = Order.new( order_params )
 
     respond_to do |format|
       if @order.save

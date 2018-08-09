@@ -5,8 +5,8 @@
   <% if @order %>
     <strong>Order ID: </strong><%= @order.id %> &mdash;
     <strong>Product Name: </strong><%= @order.product.name %> &mdash;
-    <strong>Product Price: </strong><%= number_to_euro(@order.product.price) %> &mdash;
-    <strong>Total Price: </strong><%= number_to_euro(@order.total) %> &mdash;
+    <strong>Product Price: </strong><%= number_to_currency(@order.product.price) %> &mdash;
+    <strong>Total Price: </strong><%= number_to_currency(@order.total) %> &mdash;
     <em>(uid: <%= @order.user_id %>)</em> &mdash;
     <%= link_to 'Back', orders_path, class: "edit-link" %>
   <% else %>

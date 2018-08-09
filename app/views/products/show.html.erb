@@ -16,7 +16,7 @@
       </div>
       <div class="product-info-bottom">
         <div class="price">
-          <%= @product.price %> €
+          <%= number_to_currency(@product.price) %>
         </div>
         <hr />
         <p>
