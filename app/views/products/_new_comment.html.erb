@@ -1,4 +1,5 @@
 <% if signed_in? %>
+  <hr />
   <h4>Add a review:</h4>
   <%= form_with( model: [@product, @product.comments.build], local: true) do |f| %>
     <p class="rating"></p>

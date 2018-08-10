@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
+  helper UsersHelper
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /products
   # GET /products.json

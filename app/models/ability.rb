@@ -9,8 +9,10 @@ class Ability
     can :manage, Comment, user_id: user.id  # users are allowed to remove their own comments
     if user.admin?
       can :manage, Comment
+      can :manage, Product
     else
       can :read, Comment
+      can :read, Product
     end
 
     # Define abilities for the passed in user here. For example:
