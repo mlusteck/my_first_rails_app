@@ -58,6 +58,8 @@ group :development, :test do
 
   # testing for BDD (uses spec directory instead of test)
   gem 'rspec-rails', '~> 3.7'
+
+  gem 'rails-controller-testing'
 end
 
 group :development do
