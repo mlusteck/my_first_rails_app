@@ -1,14 +1,16 @@
 require 'rails_helper'
 
 describe OrdersController, type: :controller do
-  let(:user) { User.create!(email: "spec@example.com", password: "1234567") }
-  let(:other_user) { User.create!(email: "user@other_example.com", password: "asdfghjk") }
-  let(:product) { Product.create!(name: "speculum") }
+  before do
+    @user = FactoryBot.create(:user)
+    @other_user = FactoryBot.create(:user)
+    @product = FactoryBot.create(:product)
+  end
 
   describe "GET #index" do
     context "when a user is logged in" do
       before do
-        sign_in user
+        sign_in @user
       end
 
       it "shows the orders index" do
@@ -26,10 +28,10 @@ describe OrdersController, type: :controller do
   end
 
   describe "GET #show for some order" do
-    let(:order) { Order.create!(user: user, product: product) }
+    let(:order) { Order.create!(user: @user, product: @product) }
     context "when the user is logged in, to whom it belongs" do
       before do
-        sign_in user
+        sign_in @user
       end
 
       it "shows this order" do
@@ -41,7 +43,7 @@ describe OrdersController, type: :controller do
 
     context "when a different user is logged in" do
       before do
-        sign_in other_user
+        sign_in @other_user
       end
 
       it "redirects to the root page" do
