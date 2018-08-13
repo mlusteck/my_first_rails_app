@@ -20,7 +20,7 @@ class Product < ApplicationRecord
     comments.rating_asc.first
   end
 
-  def price
+  def price_in_euro
     price_in_cents.to_d*0.01
   end
 end
