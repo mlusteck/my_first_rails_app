@@ -1,0 +1,10 @@
+<%# # partial for the stripe checkout button, local variable: product %>
+
+<script
+  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+  data-image="<%= product_image_url(product) %>"
+  data-name= "<%= product.name %>"
+  data-description= "<%= product.description %>"
+  data-amount="<%= product.price_in_cents %>">
+</script>

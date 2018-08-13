@@ -15,10 +15,16 @@
         </div>
       </div>
       <div class="product-info-bottom">
+
         <div class="price">
           <%= number_to_currency(@product.price_in_euro) %>
         </div>
         <hr />
+        <p>
+          <%= form_with(url: '/payments/create') do |form| %>
+            <%= render partial: "shared/stripe_checkout_button", locals: {product: @product}%>
+          <% end %>
+        </p>
         <p>
           <%= link_to 'Back', products_path, class: "edit-link" %>
           <% if admin_signed_in? %>
