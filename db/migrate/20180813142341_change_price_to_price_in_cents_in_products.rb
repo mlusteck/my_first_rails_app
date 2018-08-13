@@ -12,7 +12,7 @@ class ChangePriceToPriceInCentsInProducts < ActiveRecord::Migration[5.2]
       end
     end
 
-    if ActiveRecord::Base.connection.instance_of? ActiveRecord::ConnectionAdapters::SQLite3Adapter
+    if ActiveRecord::Base.connection.instance_values["config"][:adapter] == "sqlite3"
       execute("PRAGMA foreign_keys = OFF")
     end
     ActiveRecord::Base.transaction do
@@ -20,20 +20,20 @@ class ChangePriceToPriceInCentsInProducts < ActiveRecord::Migration[5.2]
       change_column :products, :price, :integer, using: 'price::integer'
       rename_column :products, :price, :price_in_cents
     end
-    if ActiveRecord::Base.connection.instance_of? ActiveRecord::ConnectionAdapters::SQLite3Adapter
+    if ActiveRecord::Base.connection.instance_values["config"][:adapter] == "sqlite3"
       execute("PRAGMA foreign_keys = ON")
     end
   end
 
   def down
-    if ActiveRecord::Base.connection.instance_of? ActiveRecord::ConnectionAdapters::SQLite3Adapter
+    if ActiveRecord::Base.connection.instance_values["config"][:adapter] == "sqlite3"
       execute("PRAGMA foreign_keys = OFF")
     end
     ActiveRecord::Base.transaction do
       rename_column :products, :price_in_cents, :price
       change_column :products, :price, :decimal, using: 'price::decimal'
     end
-    if ActiveRecord::Base.connection.instance_of? ActiveRecord::ConnectionAdapters::SQLite3Adapter
+    if ActiveRecord::Base.connection.instance_values["config"][:adapter] == "sqlite3"
       execute("PRAGMA foreign_keys = ON")
     end
 
