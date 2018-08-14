@@ -9,6 +9,12 @@
         </h3>
         <p><%= order.product.description %></p>
         <p><strong><%= number_to_currency(order.product.price_in_euro) %></strong></p>
+        <p>
+          <i>ordered <%= "#{time_ago_in_words(order.created_at)} ago" %></i>
+          <% if order.created_at != order.updated_at %>
+            <br /><i>Order was updated <%= "#{time_ago_in_words(order.updated_at)} ago" %></i>
+          <% end %>
+        </p>
         <p><%= link_to 'Show', order, class:"edit-link" %> &bull; <%= link_to 'Destroy', order, class: "edit-link",
                          method: :delete, data: { confirm: 'Are you sure?' } %>
         </p>

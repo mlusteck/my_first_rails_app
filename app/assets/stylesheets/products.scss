@@ -56,16 +56,13 @@ section.show-product h3 {
 
 .comments { padding-top: 2em; }
 
-.product-info-main { min-height: 18em; }
+.product-info-main { min-height: 11em; }
 
 .product-info-main .rated { display: inline-block; }
 
 .product-info-bottom {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   width: 100%;
-  padding: 1em;
+  padding-top: 1em;
 }
 
 .product-info-bottom .price {

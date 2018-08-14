@@ -16,7 +16,6 @@
     <hr />
 
     <p>
-      <%= button_to "Order!", orders_path,  method: :create, params: { order: { user_id: current_user, product_id: product, total_in_cents: product.price_in_cents} }, class: "btn btn-primary"  %>
       <%= link_to 'Show', product, class: "edit-link" %>
       <% if admin_signed_in? %>
         &bull;

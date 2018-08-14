@@ -9,9 +9,14 @@
     <strong>Total Price: </strong><%= number_to_currency(@order.total_in_euro) %> &mdash;
     <em>(uid: <%= @order.user_id %>)</em> &mdash;
     <%= link_to 'Back', orders_path, class: "edit-link" %>
+    <br />
+    <i>ordered <%= "#{time_ago_in_words(@order.created_at)} ago" %></i>
+    <% if @order.created_at != @order.updated_at %>
+      <br /><i>Order was updated <%= "#{time_ago_in_words(@order.updated_at)} ago" %></i>
+    <% end %>
   <% else %>
     <strong>No Order found with this ID.</strong>
   <% end %>
-</p>
+  </p>
 </div>
 <%= render 'shared/decoration_string' %>

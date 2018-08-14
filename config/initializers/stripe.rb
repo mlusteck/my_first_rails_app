@@ -9,3 +9,4 @@ else
     secret_key: ENV['STRIPE_TEST_SECRET_KEY'],
   }
 end
+Stripe.api_key = Rails.configuration.stripe[:secret_key]
