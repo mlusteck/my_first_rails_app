@@ -1,8 +1,9 @@
 class PaymentsController < ApplicationController
+  before_action :authenticate_user!
   def create
     # Token is created using Checkout or Elements!
     # Get the payment token ID submitted by the form:
-    @product = Product.find(params[:product_id])
+    @product = Product.find(params[:product_id])    
     @user = current_user
     token = params[:stripeToken]
     @order = Order.create(user: @user, product: @product, total_in_cents: @product.price_in_cents )

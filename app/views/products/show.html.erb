@@ -21,9 +21,14 @@
         </div>
         <hr />
         <p>
-          <%= form_with(url: payments_create_path) do |form| %>
-            <%= hidden_field_tag(:product_id, @product.id) %>
-            <%= render partial: "shared/stripe_checkout_button", locals: {product: @product}%>
+          <% if user_signed_in? %>
+            <%= form_with(url: payments_create_path) do |form| %>
+              <%= hidden_field_tag(:product_id, @product.id) %>
+              <%= render partial: "shared/stripe_checkout_button", locals: {product: @product}%>
+            <% end %>
+          <% else %>
+            Please <%= link_to 'sign in', new_user_session_path, class: "edit-link" %>
+            or <%= link_to 'sign up', new_user_registration_path, class: "edit-link" %> to buy!
           <% end %>
         </p>
         <p>
