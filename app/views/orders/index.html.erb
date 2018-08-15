@@ -15,8 +15,11 @@
             <br /><i>Order was updated <%= "#{time_ago_in_words(order.updated_at)} ago" %></i>
           <% end %>
         </p>
-        <p><%= link_to 'Show', order, class:"edit-link" %> &bull; <%= link_to 'Destroy', order, class: "edit-link",
+        <p><%= link_to 'Show', order, class:"edit-link" %>
+          <% if current_user.admin %>
+            &bull; <%= link_to 'Destroy', order, class: "edit-link",
                          method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </p>
       </div><!-- end col -->
     <% end %>

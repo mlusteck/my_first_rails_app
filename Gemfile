@@ -53,6 +53,9 @@ gem 'will_paginate', '~> 3.1.1'
 # Stripe payments
 gem 'stripe'
 
+# brakeman security scanner
+gem 'brakeman'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
