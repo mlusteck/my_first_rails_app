@@ -28,4 +28,8 @@ $(document).on( "turbolinks:load", function () {
       return $(this).attr('data-score');
     }
   });
+
+  // activate the elevate jQuery zoom plugin
+  $(".img-zoom").elevateZoom({zoomWindowPosition: 11, zoomWindowOffetx: -10, borderSize: 0, easing:true})
+
 });
