@@ -6,12 +6,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    logger.debug "A test debug message at the beginning of producsts#index"
+    byebug
     if params[:q]
       search_term = params[:q]
       @products = Product.search(search_term)
     else
       @products = Product.all
     end
+    logger.debug "A test debug message at the end of producsts#index"
   end
   # GET /products/1
   # GET /products/1.json
