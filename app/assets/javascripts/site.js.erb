@@ -1,16 +1,4 @@
-
-// Rails & jQuery: turbolinks prevent document(ready),
-// use this instead:
-$(document).on( "turbolinks:load", function () {
-  // slightly brutal method to get rid of yellow autocomplete styles
-  // when focus is lost: clone field, remove original
-  $('.form-control').each(function(){
-    $(this).focusout( function() {
-      var clone = $(this).clone(true, true);
-      $(this).after(clone).remove();
-    });
-  });
-
+var refreshRatyRating = function() {
   // activate the raty-ratings
   $('.rating').raty({
     starHalf:  '<%= asset_path "star-half.png" %>',
@@ -28,6 +16,22 @@ $(document).on( "turbolinks:load", function () {
       return $(this).attr('data-score');
     }
   });
+};
+
+// Rails & jQuery: turbolinks prevent document(ready),
+// use this instead:
+$(document).on( "turbolinks:load", function () {
+  // slightly brutal method to get rid of yellow autocomplete styles
+  // when focus is lost: clone field, remove original
+  $('.form-control').each(function(){
+    $(this).focusout( function() {
+      var clone = $(this).clone(true, true);
+      $(this).after(clone).remove();
+    });
+  });
+
+  // activate the raty-ratings
+  refreshRatyRating();
 
   // activate the elevate jQuery zoom plugin
   $(".img-zoom").elevateZoom({zoomWindowPosition: 11, zoomWindowOffetx: -10, borderSize: 0, easing:true})

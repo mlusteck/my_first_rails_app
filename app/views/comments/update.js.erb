@@ -1,0 +1,4 @@
+var currentComment = $("#<%= @comment.html_id %>");
+currentComment.after("<%= j render @comment %>"); // put the updated version after the old one
+currentComment.remove();
+<%= render "update_ratings_and_average" %>

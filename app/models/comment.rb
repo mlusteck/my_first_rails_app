@@ -10,4 +10,7 @@ class Comment < ApplicationRecord
   validates :product, presence: true
   validates :rating, numericality: { only_integer: true }
 
+  def html_id
+    "comment_" + self.id.to_s
+  end
 end

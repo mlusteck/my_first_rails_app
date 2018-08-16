@@ -1,0 +1,14 @@
+var currentComment = $("#<%= @comment.html_id %>");
+$(".inner-comment", currentComment).hide();
+currentComment.prepend("<%= j render 'edit_comment' %>");
+$("textarea", currentComment).attr("value", "<%= @comment.body %>")
+refreshRatyRating();
+$(".rating", currentComment).raty("score", <%= @comment.rating %>)
+
+$(".edit-comment input.btn-primary", currentComment).after("&nbsp;&nbsp;<a class='cancel edit-link' href='#'>Cancel</a>");
+$(".edit-comment a.cancel", currentComment).click( function () {
+   var currentComment = $("#<%= @comment.html_id %>");
+   $(".inner-comment", currentComment).show();
+   $(".edit-comment", currentComment).remove();
+   return false;
+});

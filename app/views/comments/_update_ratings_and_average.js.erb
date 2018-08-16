@@ -1,0 +1,8 @@
+// it is not so easy to update a raty-rating:
+avg_orig = $("#average-rating");
+avg_orig.empty();  // remove all inner elements (raty-stars)
+avg_orig.after(avg_orig[0].outerHTML);  // put a pure html clone  after the original
+avg_orig.remove();
+// now when the new score is set, it will be updated correctly
+$("#average-rating").attr("data-score", "<%= @product.average_rating %>");
+refreshRatyRating();
