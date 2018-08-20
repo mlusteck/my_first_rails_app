@@ -83,6 +83,9 @@ group :production do
   # Use PostgreSQL as the database in production environment
   # The pg gem version 1.0.0 is not yet compatible with Rails 5, so we use v0.20
   gem 'pg', '~> 0.20'
+
+  gem 'dalli'
+  gem 'memcachier'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
