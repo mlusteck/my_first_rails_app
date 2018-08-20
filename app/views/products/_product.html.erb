@@ -1,28 +1,30 @@
 <%# # partial for displaying product, local variable: product %>
 
-<div class="col-12 col-sm-6 col-md-4 col-lg-3 product-card-outer">
-  <div class="product-card">
-    <hr />
-    <%= product_linked_image product, product %>
-    <h3><%= link_to product.name, product %></h3>
-    <hr />
-    <p><%= product.description %></p>
-    <p>Colour: <%= product.colour %></p>
-  </div><!-- end product-card -->
-  <div class="product-card-bottom">
-    <div class="price">
-      <%= number_to_currency(product.price_in_euro) %>
-    </div>
-    <hr />
+<% cache_if !admin_signed_in?, product do %>
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 product-card-outer">
+    <div class="product-card">
+      <hr />
+      <%= product_linked_image product, product %>
+      <h3><%= link_to product.name, product %></h3>
+      <hr />
+      <p><%= product.description %></p>
+      <p>Colour: <%= product.colour %></p>
+    </div><!-- end product-card -->
+    <div class="product-card-bottom">
+      <div class="price">
+        <%= number_to_currency(product.price_in_euro) %>
+      </div>
+      <hr />
 
-    <p>
-      <%= link_to 'Show', product, class: "edit-link" %>
-      <% if admin_signed_in? %>
-        &bull;
-        <%= link_to 'Edit', edit_product_path(product), class: "edit-link"%> &bull;
-        <%= link_to 'Destroy', product, class: "edit-link",
-                       method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </p>
-  </div><!-- end product-card-bottom -->
-</div><!-- end col -->
+      <p>
+        <%= link_to 'Show', product, class: "edit-link" %>
+        <% if admin_signed_in? %>
+          &bull;
+          <%= link_to 'Edit', edit_product_path(product), class: "edit-link"%> &bull;
+          <%= link_to 'Destroy', product, class: "edit-link",
+                         method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </p>
+    </div><!-- end product-card-bottom -->
+  </div><!-- end col -->
+<% end %>

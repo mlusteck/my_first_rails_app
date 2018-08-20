@@ -6,11 +6,17 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @use_cached_view = false
     if params[:q]
       search_term = params[:q]
       @products = Product.search(search_term)
     else
       @products = Product.all
+      # if no search is done and no admin is present show the cached version
+      # (the admin view is different)
+      if !admin_signed_in?
+        @use_cached_view = true
+      end
     end
   end
   # GET /products/1

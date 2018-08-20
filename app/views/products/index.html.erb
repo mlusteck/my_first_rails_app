@@ -2,7 +2,9 @@
   <h1>Products</h1>
   <div class="row product-row">
     <% if @products.length > 0 %>
-      <%= render partial: "product", collection: @products %>
+      <% cache_if @use_cached_view, cache_key_for_products do %>
+        <%= render partial: "product", collection: @products %>
+      <% end %>
     <% else %>
       <div class="col-12">
         <%if params[:q] %>

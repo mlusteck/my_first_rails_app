@@ -6,10 +6,12 @@
     </div>
     <div class="col-12 col-sm-6 order-sm-first product-info">
       <div class="product-info-main">
-        <h3><%= @product.name %></h3>
-        <hr />
-        <p><%= @product.description %></p>
-        <p>Colour: <%= @product.colour %></p>
+        <% cache @product do %>
+          <h3><%= @product.name %></h3>
+          <hr />
+          <p><%= @product.description %></p>
+          <p>Colour: <%= @product.colour %></p>
+        <% end %>
         <div>Average Rating: &nbsp;
           <div class="rated" id="average-rating" data-score="<%= @product.average_rating %>"></div>
         </div>
