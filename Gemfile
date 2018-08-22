@@ -86,6 +86,9 @@ group :production do
 
   gem 'dalli'
   gem 'memcachier'
+
+  # measure performance with new relic
+  gem 'newrelic_rpm'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
