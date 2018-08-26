@@ -3,6 +3,16 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
 
+  def index
+    @product = Product.find(params[:product_id])
+    @comments = @product.comments.order("created_at DESC").paginate(page: params[:page], per_page: 4)
+    if @product
+      respond_to do |format|
+        format.js   # we want to do this with AJAX
+      end
+    end
+  end
+
   def edit
     @comment = find_comment params[:id]
     if @comment

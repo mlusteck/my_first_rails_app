@@ -47,7 +47,12 @@
   </div><!-- end row -->
   <div class="comments">
     <%= render "new_comment" %>
-    <%= render "comments" %>
+    <div id="comments">
+      <script>
+        $.get("<%= product_comments_path(@product) %>", { product_id: <%= @product.id %>, page: 1 });
+      </script>
+    </div>
   </div>
+
 </section>
 <%= render 'shared/decoration_string' %>
