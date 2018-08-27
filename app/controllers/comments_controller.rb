@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   include CommentsHelper
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   load_and_authorize_resource
 
   def index
@@ -33,6 +33,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        ActionCable.server.broadcast 'product_channel',
+          comment: @comment,
+          average_rating: @comment.product.average_rating
+
         format.html { redirect_to @product, notice: 'Review was created successfully.' }
         format.json { render :show, status: :created, location: @product }
         format.js   # we want to do this with AJAX
