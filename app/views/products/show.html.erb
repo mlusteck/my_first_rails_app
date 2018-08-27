@@ -41,6 +41,7 @@
             <%= link_to 'Destroy', @product, class: "edit-link",
                            method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
+          <br /><small><i><%= pluralize(@view_count, "view") %></i></small>
         </p>
       </div>
     </div>

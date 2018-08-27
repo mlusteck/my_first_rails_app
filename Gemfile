@@ -56,6 +56,9 @@ gem 'stripe'
 # brakeman security scanner
 gem 'brakeman'
 
+# Redis: An Advanced Key-Value Store
+gem 'redis-rails'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

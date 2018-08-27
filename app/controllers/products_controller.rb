@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @comments = @product.comments.order("created_at DESC").paginate(page: params[:page], per_page: 4)
+    @view_count = increment_view_count
   end
 
   # GET /products/new
@@ -84,4 +85,9 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :description, :image_url, :colour, :price_in_cents)
     end
+
+    def increment_view_count
+      $redis.hincrby(:product_view_count, @product.id, 1)
+    end
+
 end
