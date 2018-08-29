@@ -2,6 +2,7 @@ App.product = App.cable.subscriptions.create("ProductChannel", {
   connected: function() {
     // Called when the subscription is ready for use on the server
     console.log("ProductChannel - Connected");
+    this.isConnected = true;
   },
 
   disconnected: function() {
@@ -22,12 +23,17 @@ App.product = App.cable.subscriptions.create("ProductChannel", {
     //refreshRatyRating();
 
   },
-
   listenToComments: function() {
-    console.log("*** Start listenToComments " + $("[data-product-id]").data("product-id"))
-    return this.perform('listen',
-      { product_id: $("[data-product-id]").data("product-id") }
-    );
+    if( this.isConnected ) {
+      console.log("*** Start listenToComments " + this.isConnected + " --- " + $("[data-product-id]").data("product-id"))
+      return this.perform('listen',
+        { product_id: $("[data-product-id]").data("product-id") }
+      );
+    }
+    else {
+      console.log("listenToComments: Waiting for connection...");
+      setTimeout(function() { App.product.listenToComments()},100)
+    }
   }
 });
 
