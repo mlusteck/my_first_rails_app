@@ -13,6 +13,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+    if @comment
+      @product = @comment.product
+      respond_to do |format|
+        format.js   # we want to do this with AJAX
+      end
+    end
+  end
+
   def edit
     @comment = find_comment params[:id]
     if @comment
@@ -29,14 +39,9 @@ class CommentsController < ApplicationController
     @product = Product.find(params[:product_id])
     @comment = @product.comments.new(comment_params)
     @comment.user = current_user
-    @comment.save
 
     respond_to do |format|
       if @comment.save
-        ActionCable.server.broadcast 'product_channel',
-          comment: @comment,
-          average_rating: @comment.product.average_rating
-
         format.html { redirect_to @product, notice: 'Review was created successfully.' }
         format.json { render :show, status: :created, location: @product }
         format.js   # we want to do this with AJAX

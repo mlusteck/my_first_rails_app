@@ -1,6 +1,6 @@
 <%= render 'shared/decoration_string' %>
 <section class="show-product">
-  <div class="row">
+  <div class="row" data-product-id="<%= @product.id %>">
     <div class="col-12 col-sm-6 product-image">
       <%= product_zoom_image_tag @product %>
     </div>

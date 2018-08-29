@@ -14,6 +14,23 @@ App.product = App.cable.subscriptions.create("ProductChannel", {
     setTimeout( function() {
       $(".alert.alert-info").slideUp();
       //$(".alert.alert-info").hide();
-    }, 6000);
+    }, 3000);
+    $.get(data.comment_path);
+    //$("#comments .product-reviews").prepend(data.comment);
+    //changeAverageRating(data.average_rating);
+    //refreshRatyRating();
+
+  },
+
+  listenToComments: function() {
+    return this.perform('listen',
+      { product_id: $("[data-product-id]").data("product-id") }
+    );
   }
+});
+
+// when document is ready, start listening to product_channel
+// for comments for this product-id
+$(document).on('turbolinks:load', function() {
+  App.product.listenToComments();
 });

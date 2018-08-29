@@ -1,4 +1,7 @@
 var currentComment = $("#<%= @comment.html_id %>");
-currentComment.after("<%= j render @comment %>"); // put the updated version after the old one
+currentComment.after(
+  "<%= j render partial: 'comment', locals: {comment: @comment, current_user: current_user, hidden:false} %>"
+); // put the updated version after the old one
 currentComment.remove();
-<%= render "update_ratings_and_average" %>
+changeAverageRating("<%= @product.average_rating %>");
+refreshRatyRating();

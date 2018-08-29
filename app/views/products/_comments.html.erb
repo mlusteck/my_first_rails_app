@@ -1,6 +1,6 @@
 <div class="product-reviews">
   <% @comments.each do |comment| %>
-    <%= render comment %>
+    <%= render partial: "comments/comment", locals: {comment: comment, current_user: current_user, hidden:false} %>
   <% end %>
   <%= will_paginate @comments, previous_label: "&laquo;", next_label: "&raquo;", class: "comments-pagination" %>
 </div>
