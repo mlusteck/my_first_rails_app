@@ -1,5 +1,6 @@
 $("#comments").empty().prepend("<%= j render partial: 'products/comments' %>");
 $('.comments-pagination a').attr('data-remote', 'true');
 refreshRatyRating();
-alert("Listen to comments!");
+console.log("Listen to comments!");
+console.log(App.product.listenToComments);
 App.product.listenToComments();

@@ -23,6 +23,7 @@ App.product = App.cable.subscriptions.create("ProductChannel", {
   },
 
   listenToComments: function() {
+    console.log("*** Start listenToComments " + $("[data-product-id]").data("product-id"))
     return this.perform('listen',
       { product_id: $("[data-product-id]").data("product-id") }
     );
