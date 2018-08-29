@@ -4,3 +4,7 @@ refreshRatyRating();
 console.log("Listen to comments!");
 console.log(App.product.listenToComments);
 App.product.listenToComments();
+setTimeout( function() {
+  console.log("Listen after waiting!");
+  App.product.listenToComments();
+}, 1000);
