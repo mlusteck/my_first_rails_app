@@ -11,7 +11,9 @@ class ProductChannel < ApplicationCable::Channel
   # called by client on the product page via JS:
   # perform('listen', {...data object...});
   def listen(data)
+    logger.debug "***** Start listen " +  data['product_id'].to_s
     stop_all_streams
     stream_for data['product_id']
+    logger.debug "***** Now listening to " +  data['product_id'].to_s
   end
 end
