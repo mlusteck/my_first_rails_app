@@ -3,7 +3,6 @@ class CommentUpdateJob < ApplicationJob
   queue_as :default
 
   def perform(comment)
-    logger.debug "***** Perform Comment"
     product = comment.product
     ProductChannel.broadcast_to(
       product.id,
