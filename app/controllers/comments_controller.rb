@@ -42,12 +42,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        #ProductChannel.broadcast_to(
-        #  @product.id,
-        #  average_rating: @product.average_rating,
-        #  comment_path: product_comment_path(@product, @comment)
-        #)
-
         format.html { redirect_to @product, notice: 'Review was created successfully.' }
         format.json { render :show, status: :created, location: @product }
         format.js   # we want to do this with AJAX
