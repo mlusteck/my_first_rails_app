@@ -1,29 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+<%= render 'shared/decoration_string' %>
+<div class="container">
+  <h1>Users</h1>
+  <% @users.each do |user| %>
+    <div class="row">
+      <div class="col-12 col-sm-5 col-md-4">
+        <h4>User # <%= user.id %>: <%= user.first_name %> <%= user.last_name %></h4>
+      </div>
+      <div class="col-12 col-sm-7 col-md-8">
+        <p>
+          <%= user.email %>
+          <% if current_user.admin %>
+            &bull; <%= link_to 'Destroy', user, class: "edit-link",
+                         method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </p>
+      </div>
+    </div><!-- end row -->
+  <% end %>
+</div>
+<%= render 'shared/decoration_string' %>

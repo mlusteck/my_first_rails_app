@@ -10,6 +10,7 @@ class Ability
       can :manage, Comment
       can :manage, Product
       can :manage, Order
+      can :manage, User
     else
       can :read, Comment
       can :read, Product
