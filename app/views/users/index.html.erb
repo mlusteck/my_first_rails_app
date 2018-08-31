@@ -9,6 +9,7 @@
       <div class="col-12 col-sm-7 col-md-8">
         <p>
           <%= user.email %>
+          &bull; <%= link_to 'Show', user, class: "edit-link" %>
           <% if current_user.admin %>
             &bull; <%= link_to 'Destroy', user, class: "edit-link",
                          method: :delete, data: { confirm: 'Are you sure?' } %>

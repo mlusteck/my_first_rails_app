@@ -1,18 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= render 'shared/decoration_string' %>
+<div class="container">
+  <h2>User Information</h2>
+  <% if @user %>
+    <p>
+      <strong>User ID: </strong><%= @user.id %> &mdash;
+      <strong>First Name: </strong><%= @user.first_name %> &mdash;
+      <strong>Last Name: </strong><%= @user.last_name %> &mdash;
+      <strong>Email: </strong><%= @user.email %> &mdash;
+      <%= link_to 'Back', users_path, class: "edit-link" %>
+    </p>
+    <p>
+      <i>Signed up <%= "#{time_ago_in_words(@user.created_at)} ago" %></i>
+      <% if @user.created_at != @user.updated_at %>
+        <br /><i>User information was updated <%= "#{time_ago_in_words(@user.updated_at)} ago" %></i>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <strong>No user found with this ID.</strong>
+    </p>
+  <% end %>
+  </p>
+</div>
+<%= render 'shared/decoration_string' %>
