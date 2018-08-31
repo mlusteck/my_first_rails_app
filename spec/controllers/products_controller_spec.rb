@@ -24,18 +24,6 @@ describe ProductsController, type: :controller do
   end
 
   describe "GET #edit for some product" do
-    context "when a non-admin user is logged in" do
-      before do
-        sign_in @other_user
-      end
-
-      it "redirects to the root page" do
-        get :edit, params: {id: @product.id }
-        expect(response).to redirect_to(root_path)
-      end
-    end
-
-
     context "when a admin user is logged in" do
       before do
         sign_in @admin
@@ -48,27 +36,23 @@ describe ProductsController, type: :controller do
       end
     end
 
-    context "when a user is not logged in" do
-      it "redirects to the root page" do
-        get :edit, params: {id: @product.id }
-        expect(response).to redirect_to(root_path)
+    ["non-admin user", "no user"].each do |unauthorized_editor|
+      context "when #{unauthorized_editor} is logged in" do
+        before do
+          if(unauthorized_editor == "non-admin user")
+            sign_in @other_user
+          end
+        end
+
+        it "redirects to the root page" do
+          get :edit, params: {id: @product.id }
+          expect(response).to redirect_to(root_path)
+        end
       end
     end
-  end
+  end ### end of "GET #edit for some product" ##################################
 
   describe "GET #new" do
-    context "when a non-admin user is logged in" do
-      before do
-        sign_in @other_user
-      end
-
-      it "redirects to the root page" do
-        get :new
-        expect(response).to redirect_to(root_path)
-      end
-    end
-
-
     context "when a admin user is logged in" do
       before do
         sign_in @admin
@@ -80,11 +64,144 @@ describe ProductsController, type: :controller do
       end
     end
 
-    context "when a user is not logged in" do
-      it "redirects to the root page" do
-        get :new
-        expect(response).to redirect_to(root_path)
+    ["non-admin user", "no user"].each do |unauthorized_editor|
+      context "when #{unauthorized_editor} is logged in" do
+        before do
+          if(unauthorized_editor == "non-admin user")
+            sign_in @other_user
+          end
+        end
+
+        it "redirects to the root page" do
+          get :new
+          expect(response).to redirect_to(root_path)
+        end
       end
     end
-  end
+  end ### end of "GET #new" ####################################################
+
+  describe "POST #create" do
+    before do
+      @new_product = FactoryBot.build(:product, name:"new beast")
+    end
+
+    context "when an admin is logged in" do
+      before do
+        sign_in @admin
+      end
+
+      context "when the new product is valid" do
+        it 'creates the comment successfully' do
+          post :create, params: {  product: @new_product.attributes }
+          expect(Product.search("new").first.name).to eq("new beast")
+        end
+      end
+
+      context "when the new product has no name" do
+        before do
+          @new_product.name = ""
+        end
+
+        it 'does not create the product and shows the new product page' do
+          post :create, params: {  product: @new_product.attributes }
+          expect(Product.all.to_a).to eq [@product]
+          expect(response).to render_template('new')
+        end
+      end
+    end
+
+    ["non-admin user", "no user"].each do |unauthorized_editor|
+      context "when #{unauthorized_editor} is logged in" do
+        before do
+          if(unauthorized_editor == "non-admin user")
+            sign_in @other_user
+          end
+        end
+
+        it "does not create the product and redirects to the root page" do
+          post :create, params: {  product: @new_product.attributes }
+          expect(Product.all.to_a).to eq [@product]
+          expect(response).to redirect_to(root_path)
+        end
+      end
+    end
+  end ### end of "POST #create" ################################################
+
+  describe "PUT #update" do
+    before do
+      @updated_product = FactoryBot.build(:product, name:"new beast")
+    end
+
+    context "when an admin is logged in" do
+      before do
+        sign_in @admin
+      end
+
+      context "when the product update is valid" do
+        it 'updates the product successfully' do
+          put :update, params: {  product: @updated_product.attributes, id: @product.id }
+          expect(Product.first.name).to eq("new beast")
+        end
+      end
+
+      context "when the product update has no name" do
+        before do
+          @updated_product.name = ""
+        end
+
+        it 'does not change the product' do
+          put :update, params: {  product: @updated_product.attributes, id: @product.id }
+          expect(Product.all.to_a).to eq [@product]
+        end
+      end
+    end
+
+    ["non-admin user", "no user"].each do |unauthorized_editor|
+      context "when #{unauthorized_editor} is logged in" do
+        before do
+          if(unauthorized_editor == "non-admin user")
+            sign_in @other_user
+          end
+        end
+
+        it "does not change the product and redirects to the root page" do
+          put :update, params: {  product: @updated_product.attributes, id: @product.id }
+          expect(Product.all.to_a).to eq [@product]
+          expect(response).to redirect_to(root_path)
+        end
+      end
+    end
+  end ### end of "PUT #update" ################################################
+
+  describe "DELETE #destroy" do
+    before do
+      @product2 = FactoryBot.create(:product)
+    end
+    context "when an admin is logged in" do
+      before do
+        sign_in @admin
+      end
+
+      it 'deletes the product' do
+        delete :destroy, params: { id: @product.id }
+        expect(Product.all.to_a).to eq [@product2]
+      end
+    end
+
+    ["non-admin user", "no user"].each do |unauthorized_editor|
+      context "when #{unauthorized_editor} is logged in" do
+        before do
+          if(unauthorized_editor == "non-admin user")
+            sign_in @other_user
+          end
+        end
+
+        it "does not delete the product and redirects to the root page" do
+          delete :destroy, params: { id: @product.id }
+          expect(Product.all.to_a).to eq [@product, @product2]
+          expect(response).to redirect_to(root_path)
+        end
+      end
+    end
+  end ### end of "DELETE #destroy" #############################################
 end

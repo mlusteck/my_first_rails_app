@@ -70,10 +70,11 @@ class CommentsController < ApplicationController
         else
           format.html { redirect_to @product, alert: 'Comment was not updated.' }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
+          return
         end
       end
     end
-    redirect_to product
+    redirect_to @product
   end
 
   def destroy
