@@ -3,7 +3,7 @@ class PaymentsController < ApplicationController
   def create
     # Token is created using Checkout or Elements!
     # Get the payment token ID submitted by the form:
-    @product = Product.find(params[:product_id])    
+    @product = Product.find(params[:product_id])
     @user = current_user
     token = params[:stripeToken]
     @order = Order.create(user: @user, product: @product, total_in_cents: @product.price_in_cents )
@@ -28,6 +28,9 @@ class PaymentsController < ApplicationController
     if !@charge_paid
       @order.destroy
       redirect_to product_path(@product)
+    else
+      logger.debug "order_notification: User: #{@user.email} "
+      UserMailer.order_notification(@user,@order).deliver_now
     end
   end
 end
