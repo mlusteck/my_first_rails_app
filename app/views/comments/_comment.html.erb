@@ -10,13 +10,17 @@
         <%= comment.user.first_name %>
       <% end %>
       <small><em><%= "#{time_ago_in_words(comment.created_at)} ago" %></em></small>
-      <% if current_user && (current_user.admin? || current_user == comment.user)%>
+      <% if can? :destroy, comment %>
         <small>
           &nbsp;
           <%= link_to 'Remove', product_comment_path(comment.product, comment),
                       method: :delete, remote: true,
                       data: { confirm: 'Are you sure?' },
                       class: "edit-link" %>
+        </small>
+      <% end %>
+      <% if can? :edit, comment%>
+        <small>
           &nbsp;
           <%= link_to 'Edit', edit_product_comment_path(comment.product, comment),
                       remote: true,

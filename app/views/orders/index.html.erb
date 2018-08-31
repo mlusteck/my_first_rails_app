@@ -16,7 +16,7 @@
           <% end %>
         </p>
         <p><%= link_to 'Show', order, class:"edit-link" %>
-          <% if current_user.admin %>
+          <% if can? :destroy, order %>
             &bull; <%= link_to 'Destroy', order, class: "edit-link",
                          method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>

@@ -4,7 +4,6 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
     can :manage, User, id: user.id
-    can :manage, Order, user_id: user.id
     can :manage, Comment, user_id: user.id  # users are allowed to remove their own comments
     if user.admin?
       can :manage, Comment
@@ -13,6 +12,7 @@ class Ability
       can :manage, User
     else
       can :read, Comment
+      can :read, Order
       can :read, Product
     end
 

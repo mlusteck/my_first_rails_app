@@ -10,7 +10,7 @@
         <p>
           <%= user.email %>
           &bull; <%= link_to 'Show', user, class: "edit-link" %>
-          <% if current_user.admin %>
+          <% if can? :destroy, user %>
             &bull; <%= link_to 'Destroy', user, class: "edit-link",
                          method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
