@@ -91,6 +91,7 @@ class CommentsController < ApplicationController
         else
           format.html { redirect_to @product, alert: 'Comment was not destroyed.' }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
+          return
         end
       end
     end

@@ -15,6 +15,37 @@
         <br /><i>User information was updated <%= "#{time_ago_in_words(@user.updated_at)} ago" %></i>
       <% end %>
     </p>
+    <% if admin_signed_in? %>
+      <hr>
+      <h4>Orders by this user</h4>
+      <p>
+        <% @user.orders.each do |order| %>
+          <strong>Order ID: </strong><%= order.id %> &mdash;
+          <strong>Product Name: </strong><%= order.product.name %> &mdash;
+          <i>ordered <%= "#{time_ago_in_words(order.created_at)} ago" %></i>
+          <%= render partial: "shared/destroy_button", locals:{object: order} %>
+          <br />
+        <% end %>
+      </p>
+      <hr>
+      <h4>Comments by this user</h4>
+      <p>
+        <% @user.comments.each do |comment| %>
+          <strong>Product Name: </strong><%= comment.product.name %> &mdash;
+          <strong>Rating: </strong><%= comment.rating %> &mdash;
+          <strong>Comment: </strong><%= comment.body %> &mdash;
+          <i>written <%= "#{time_ago_in_words(comment.created_at)} ago" %></i>
+          <% if can? :destroy, comment %>
+            &bull;
+            <%= link_to 'Remove', product_comment_path(comment.product, comment),
+                          method: :delete, remote: true,
+                          data: { confirm: 'Are you sure?' },
+                          class: "edit-link" %>
+          <% end %>
+          <br />
+        <% end %>
+      </p>
+    <% end %>
   <% else %>
     <p>
       <strong>No user found with this ID.</strong>

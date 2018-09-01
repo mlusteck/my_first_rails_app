@@ -1,0 +1,5 @@
+<%# locals: object %>
+<% if can? :destroy, object %>
+  &bull; <%= link_to 'Destroy', object, class: "edit-link",
+               method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

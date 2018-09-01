@@ -10,10 +10,7 @@
         <p>
           <%= user.email %>
           &bull; <%= link_to 'Show', user, class: "edit-link" %>
-          <% if can? :destroy, user %>
-            &bull; <%= link_to 'Destroy', user, class: "edit-link",
-                         method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
+          <%= render partial: "shared/destroy_button", locals:{object: user} %>
         </p>
       </div>
     </div><!-- end row -->

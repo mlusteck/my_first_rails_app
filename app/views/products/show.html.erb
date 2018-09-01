@@ -55,6 +55,19 @@
       </script>
     </div>
   </div>
+  <% if admin_signed_in? %>
+    <hr>
+    <h4>Orders for this product</h4>
+    <p>
+      <% @product.orders.each do |order| %>
+        <strong>Order ID: </strong><%= order.id %> &mdash;
+        <strong>User: </strong><%= order.user.email %> &mdash;
+        <i>ordered <%= "#{time_ago_in_words(order.created_at)} ago" %></i>
+        <%= render partial: "shared/destroy_button", locals:{object: order} %>
+        <br />
+      <% end %>
+    </p>
+  <% end %>
 
 </section>
 <%= render 'shared/decoration_string' %>
