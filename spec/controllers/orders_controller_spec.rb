@@ -43,13 +43,14 @@ describe OrdersController, type: :controller do
     end
 
     context "when a different user is logged in" do
+      render_views
       before do
         sign_in @other_user
       end
 
-      it "redirects to the root page" do
+      it "declares that there is no such order" do
         get :show, params: {id: order.id}
-        expect(response).to redirect_to(root_path)
+        expect(response.body).to match("No Order found with this ID")
       end
     end
 
