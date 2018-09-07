@@ -1,17 +1,15 @@
 require 'rails_helper'
 
 describe OrdersController, type: :controller do
-  before do
-    @user = FactoryBot.create(:user)
-    @admin = FactoryBot.create(:admin)
-    @other_user = FactoryBot.create(:user)
-    @product = FactoryBot.create(:product)
-  end
+  let(:admin) { FactoryBot.create(:admin) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:other_user) { FactoryBot.create(:user) }
+  let(:product) { FactoryBot.create(:product) }
 
   describe "GET #index" do
     context "when a user is logged in" do
       before do
-        sign_in @user
+        sign_in user
       end
 
       it "shows the orders index" do
@@ -29,10 +27,10 @@ describe OrdersController, type: :controller do
   end ### end of "GET #index" ##################################################
 
   describe "GET #show for some order" do
-    let(:order) { Order.create!(user: @user, product: @product) }
+    let(:order) { Order.create!(user: user, product: product) }
     context "when the user is logged in, to whom it belongs" do
       before do
-        sign_in @user
+        sign_in user
       end
 
       it "shows this order" do
@@ -45,7 +43,7 @@ describe OrdersController, type: :controller do
     context "when a different user is logged in" do
       render_views
       before do
-        sign_in @other_user
+        sign_in other_user
       end
 
       it "declares that there is no such order" do
@@ -63,11 +61,11 @@ describe OrdersController, type: :controller do
   end ### end of "GET #show for some order" ####################################
 
   describe "destroy an order" do
-    let!(:order) { Order.create!(user: @user, product: @product) }
-    let!(:order2) { Order.create!(user: @other_user, product: @product) }
+    let!(:order) { Order.create!(user: user, product: product) }
+    let!(:order2) { Order.create!(user: other_user, product: product) }
     context "when an admin is logged in" do
       before do
-        sign_in @admin
+        sign_in admin
       end
 
       it "deletes this order" do
@@ -78,7 +76,7 @@ describe OrdersController, type: :controller do
 
     context "when the user of this order is logged in" do
       before do
-        sign_in @user
+        sign_in user
       end
 
       it "does not delete this order" do

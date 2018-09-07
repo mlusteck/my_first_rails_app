@@ -2,6 +2,12 @@ require 'rails_helper'
 
 describe Product do
 
+  context "when a new product is created" do
+    it "is not valid without a name" do
+      expect( FactoryBot.build(:product, name: nil)).not_to be_valid
+    end
+  end
+
   context "when there are some similar products" do
     before do
       FactoryBot.create(:product, name:"BLA")
@@ -35,10 +41,6 @@ describe Product do
 
     it "returns the comment with highest rating" do
       expect(@product.highest_rating_comment.rating).to eq 5
-    end
-
-    it "is not valid without a name" do
-      expect( Product.new(description: "A horrible beast")).not_to be_valid
     end
   end
 end

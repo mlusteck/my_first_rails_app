@@ -7,11 +7,11 @@ describe User do
     end
 
     it "is not valid without an email address" do
-      expect( User.new(first_name: "John")).not_to be_valid
+      expect( FactoryBot.build(:user, email: nil) ).not_to be_valid
     end
 
     it "is not valid without an '@' in the email address" do
-      expect( User.new(email: "asd", password:"1234567")).not_to be_valid
+      expect( FactoryBot.build(:user, email: "asd") ).not_to be_valid
     end
 
     it "is not valid with a password shorter than 6 letters" do
