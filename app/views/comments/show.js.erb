@@ -3,4 +3,4 @@ $("#comments .product-reviews").prepend(
 );
 changeAverageRating("<%= @product.average_rating %>");
 refreshRatyRating();
-$("#<%= @comment.html_id %>").slideDown();
+$("#<%= dom_id(@comment) %>").slideDown();

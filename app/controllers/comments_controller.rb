@@ -4,9 +4,8 @@ class CommentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @product = Product.find(params[:product_id])
-    @comments = @product.comments.order("created_at DESC").paginate(page: params[:page], per_page: 4)
-    if @product
+    if @product = Product.find_by(id: params[:product_id])
+      @comments = @product.comments.order("created_at DESC").paginate(page: params[:page], per_page: 4)
       respond_to do |format|
         format.js   # we want to do this with AJAX
       end
@@ -14,7 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find_by(id: params[:id])
     if @comment
       @product = @comment.product
       respond_to do |format|
@@ -81,7 +80,7 @@ class CommentsController < ApplicationController
     @comment = find_comment params[:id]
     if @comment
       @product = @comment.product
-      @destroyed_comment_id = @comment.html_id
+      @destroyed_comment_id = dom_id(@comment)
       respond_to do |format|
         if @comment.destroy
           format.html { redirect_to @product  }
@@ -102,5 +101,13 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit( :body, :rating)
+    end
+
+    def find_comment comment_id
+      if current_user.admin
+        Comment.find_by(id: comment_id)
+      else
+        current_user.comments.find_by(id: comment_id)
+      end
     end
 end

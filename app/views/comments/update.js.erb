@@ -1,4 +1,4 @@
-var currentComment = $("#<%= @comment.html_id %>");
+var currentComment = $("#<%= dom_id(@comment) %>");
 currentComment.after(
   "<%= j render partial: 'comment', locals: {comment: @comment, current_user: current_user, hidden:false} %>"
 ); // put the updated version after the old one

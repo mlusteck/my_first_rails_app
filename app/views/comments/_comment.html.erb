@@ -1,6 +1,6 @@
 <%# locals: comment, current_user, hidden %>
 
-<div id="<%= comment.html_id %>" style="<%= 'display:none;' if hidden %>">
+<div id="<%= dom_id(comment) %>" style="<%= 'display:none;' if hidden %>">
   <div class="inner-comment">
     <hr>
     <p>
